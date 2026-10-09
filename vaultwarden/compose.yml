@@ -1,0 +1,22 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.37.4-alpine
+    container_name: vaultwarden
+    environment:
+      # Vaultwarden configuration
+      SIGNUPS_ALLOWED: "false"
+      INVITATIONS_ALLOWED: "false"
+      DOMAIN: "https://vaultwarden.vaultwarden.orb.local"
+      # Logging configuration
+      LOG_FILE: "/data/vaultwarden.log"
+      LOG_LEVEL: "warn"
+      EXTENDED_LOGGING: "true"
+      # Admin token
+      ADMIN_TOKEN: "$$argon2id$$v=19$$m=65540,t=3,p=4$$dG1JdjNrQWNhMDJyeFIrV2xUbVVSdGJaL2drQVp1eGtFajBIQkMxdEVtTT0$$bSRxNRW5Fm/2a6t8Cezz1FRaHvuFClOAUPRwdC+oMnk"
+      # Timezone configuration
+      TZ: "Europe/Paris"
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    ports:
+      - "8080:80"
