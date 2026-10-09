@@ -2,6 +2,8 @@ services:
   vaultwarden:
     image: vaultwarden/server:1.37.4-alpine
     container_name: vaultwarden
+    env_file:
+      - .env
     environment:
       # Vaultwarden configuration
       SIGNUPS_ALLOWED: "false"
@@ -12,7 +14,7 @@ services:
       LOG_LEVEL: "warn"
       EXTENDED_LOGGING: "true"
       # Admin token
-      ADMIN_TOKEN: "$$argon2id$$v=19$$m=65540,t=3,p=4$$dG1JdjNrQWNhMDJyeFIrV2xUbVVSdGJaL2drQVp1eGtFajBIQkMxdEVtTT0$$bSRxNRW5Fm/2a6t8Cezz1FRaHvuFClOAUPRwdC+oMnk"
+      ADMIN_TOKEN: "${ADMIN_TOKEN}"
       # Timezone configuration
       TZ: "Europe/Paris"
     restart: unless-stopped
