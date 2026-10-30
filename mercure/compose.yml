@@ -4,11 +4,11 @@ services:
     restart: unless-stopped
     environment:
       # Uncomment to disable HTTPS (use behind a reverse proxy)
-      #SERVER_NAME: ':80'
+      # SERVER_NAME: ':80'
       MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY}
       MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_SUBSCRIBER_JWT_KEY}
       # Uncomment to run in development mode (insecure playground)
-      MERCURE_EXTRA_DIRECTIVES: playground
+      # MERCURE_EXTRA_DIRECTIVES: playground
     ports:
       - "80:80"
       - "443:443"
