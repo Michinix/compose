@@ -1,14 +1,12 @@
 services:
   mercure:
-    image: dunglas/mercure
+    image: dunglas/mercure:v1.1.5
     restart: unless-stopped
     environment:
-      # Uncomment to disable HTTPS (use behind a reverse proxy)
-      # SERVER_NAME: ':80'
-      MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY}
-      MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_SUBSCRIBER_JWT_KEY}
-      # Uncomment to run in development mode (insecure playground)
-      # MERCURE_EXTRA_DIRECTIVES: playground
+      SERVER_NAME: ':80'
+      MERCURE_PUBLISHER_JWT_KEY: '${MERCURE_PUBLISHER_JWT_KEY}'
+      MERCURE_SUBSCRIBER_JWT_KEY: '${MERCURE_SUBSCRIBER_JWT_KEY}'
+      MERCURE_CORS_ORIGINS: '${MERCURE_CORS_ORIGINS}'
     ports:
       - "80:80"
       - "443:443"
